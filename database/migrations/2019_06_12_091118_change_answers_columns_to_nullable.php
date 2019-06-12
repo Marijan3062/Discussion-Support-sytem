@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAnswersTable extends Migration
+class ChangeAnswersColumnsToNullable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('question_id');
-            $table->text('text', 255);
-            $table->timestamps();
+        Schema::table('answers', function (Blueprint $table) {
+            //
+            $table->text('text')->nullable()->change();
         });
     }
 
@@ -29,6 +26,9 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::table('answers', function (Blueprint $table) {
+            //
+            $table->text('text')->nullable(false)->change();
+        });
     }
 }
