@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/questions', 'QuestionController@index');
 Route::get('/questions/1', 'QuestionController@show');
 Route::get('/categories', 'CategoryController@index');
+Route::get('/answers/1', 'AnswersController@show');
+Route::post('/answers/1', 'AnswersController@vote');
