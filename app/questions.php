@@ -4,7 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class questions extends Model
+class Question extends Model
 {
     //
+    public function answers()
+    {
+        //   Question has many Answer
+        return $this->hasMany('App\Answer');
+    }
 }
