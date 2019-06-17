@@ -10,6 +10,11 @@ use App\Answer;
 class QuestionController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
+
     public function index()
     {
         $questions = Question::orderBy('created_at', 'desc')->get();

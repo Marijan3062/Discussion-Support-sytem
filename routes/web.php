@@ -28,3 +28,7 @@ Route::get('/categories', 'CategoryController@index');
 
 Route::get('/answers/{id}', 'AnswerController@show')->name('answer.show');
 Route::post('/answers/{id}', 'AnswerController@vote');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
